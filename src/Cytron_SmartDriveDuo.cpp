@@ -118,34 +118,6 @@ void Cytron_SmartDriveDuo::control(signed int motorLSpeed, signed int motorRSpee
       }
       break;
 
-    case PWM_INDEPENDENT:
-      if (motorLSpeed >= 0) {
-        if (motorLSpeed > 100) motorLSpeed = 100;
-        motorLSpeed = motorLSpeed * 2.55;
-        analogWrite(_an1Pin, motorLSpeed);
-        digitalWrite(_in1Pin, LOW);
-      }
-      else if (motorLSpeed < 0) {
-        if (motorLSpeed < -100) motorLSpeed = -100;
-        motorLSpeed = motorLSpeed * -2.55;
-        analogWrite(_an1Pin, motorLSpeed);
-        digitalWrite(_in1Pin, HIGH);
-      }
-      
-      if (motorRSpeed >= 0) {
-        if (motorRSpeed > 100) motorRSpeed = 100;
-        motorRSpeed = motorRSpeed * 2.55;
-        analogWrite(_an2Pin, motorRSpeed);
-        digitalWrite(_in2Pin, HIGH);
-      }
-      else if (motorRSpeed < 0) {
-        if (motorRSpeed < -100) motorRSpeed = -100;
-        motorRSpeed = motorRSpeed * -2.55;
-        analogWrite(_an2Pin, motorRSpeed);
-        digitalWrite(_in2Pin, LOW);
-      }
-      break;
-
     case SERIAL_SIMPLIFIED:
       if (motorLSpeed >= 0) {
         commandByte = 0;
